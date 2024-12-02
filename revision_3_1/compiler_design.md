@@ -1,4 +1,5 @@
-### UNIT-I:
+# Syllabus
+## UNIT-I:
 Programs related to compilers.
 Translation process.
 Major data structures.
@@ -11,7 +12,7 @@ Lexical analysis:
 * Recognition of Tokens
 * The Lexical-Analyzer Generator Lex.
 
-### UNIT-II: 12
+## UNIT-II: 12
 Periods Design of Parsers:
 * Top-down Parsers
 * Backtracking
@@ -21,7 +22,7 @@ Periods Design of Parsers:
 * LL (1) grammar,
 * Non-recursive descent parser (Predictive Parser).
 
-### UNIT-III:
+## UNIT-III:
 Bottom-up parser:
 * Introduction to LR Parsing
 * Shift Reduce parser
@@ -29,12 +30,13 @@ Bottom-up parser:
 LR parser:
 * LR (0)
 * SLR
-* CLRparsers. LALR parser
+* CLR parsers
+* LALR parsers
 * Parser Generator - YACC.
 
-### UNIT-IV:
+## UNIT-IV:
 Syntax Directed Translation:
-*Syntax Directed Definitions and Translation.
+* Syntax Directed Definitions and Translation.
 * Intermediate code generation
 * Three-Address Code
 * DAG, Types and Declarations,
@@ -45,7 +47,7 @@ Machine Independent Optimizations:
 * Introduction to data flow analysis
 * Foundation of data flow analysis.
 
-### UNIT-V:
+## UNIT-V:
 Code Generation:
 * Problems
 * Machine model
@@ -64,12 +66,12 @@ Storage Organization and Error Recovery:
 
 
 
-### Unit - I
-# Programs related to compilers.
-## Question
+# Questions and Answers
+## Unit - I
+### Question
 Define compiler? Explain Phases of compilation with examples?
 
-## Answer
+### Answer
 A Compiler is a program that takes a source language and through the use
 of the languages syntax and semantic specification, translates it into equivalent
 target language.
@@ -110,13 +112,13 @@ Phases of Compilation are:
     intermediate code and generates the actual machine code that can be executed by
     the target hardware.
 
-## Question
+### Question
 Identify the Lexemes, Tokens and write the number of tokens in a given program.
 ```c
 int main() { int *a,b; b=10; a=&b; printf(“%d%d”,b,*a); b=*/*pointer*/b; }
 ```
 
-## Answer
+### Answer
 Lexemes are the smallest units of a program that the compiler can recognize. Tokens are the
 group of characters that are meaningful to the compiler. The number of tokens in the given program
 are 20. The tokens are:
@@ -197,10 +199,10 @@ Lexemes         | Tokens
 22. }           | Special Symbol
 ```
 
-## Question
+### Question
 Explain the key elements in the lex program?
 
-## Answer
+### Answer
 The key elements in the lex program are:
 * Regular Expressions:
     Regular expressions are used to define the patterns of tokens in the input
@@ -222,10 +224,10 @@ The key elements in the lex program are:
     regular expression pattern followed by an action. When the input stream
     matches the pattern, the action associated with the rule is executed
 
-## Question
+### Question
 Explain about input buffering and its types.
 
-## Answer
+### Answer
 Input buffering is the process of reading characters from the input stream and
 storing them in a buffer before processing them. Input buffering is used to
 improve the efficiency of the lexical analysis phase by reducing the number of
@@ -250,11 +252,11 @@ Types of input buffering are:
     programming languages or other input streams that are organized into
     tokens.
 
-## Question
+### Question
 Demonstrate the phases of compiler for the following
 assignment statement: a = (b+c)+12.
 
-## Answer
+### Answer
 The phases of the compiler for the assignment statement "a = (b+c)+12" are:
 * Lexical Analysis:
     The lexical analysis phase reads the input stream and breaks it into tokens.
@@ -300,7 +302,7 @@ The phases of the compiler for the assignment statement "a = (b+c)+12" are:
     The code generation phase takes the optimized intermediate code and generates
     the actual machine code that can be executed by the target hardware.
 
-## Question
+### Question
 Compare PASS and PHASE with examples?
 
 ##
@@ -350,10 +352,10 @@ PHASE:
          b   c
     ```
 
-## Question
+### Question
 Explain Bootstrap technique with example?
 
-## Answer
+### Answer
 Bootstrapping is the process of writing a compiler for a programming language
 using the language itself. In other words, it is the process of using a
 compiler written in a particular programming language to compile a new version
@@ -381,11 +383,11 @@ Disadvantages of bootstrapping:
   errors/idiosyncrasies in an earlier compiler can effect the results of later
   versions.
 
-## Question
+### Question
 What kind of errors can be detected during lexical
 analysis? Explain.
 
-## Answer
+### Answer
 The following types of errors can be detected during lexical analysis:
 * Illegal characters: The lexer can detect characters that are not part of the programming language's character set.
 * Invalid tokens: The lexer can detect tokens that do not conform to the language's syntax rules.
@@ -397,11 +399,11 @@ The following types of errors can be detected during lexical analysis:
 * Whitespace: The lexer can detect excessive whitespace or tabs that are not part of the language's syntax.
 * Line breaks: The lexer can detect line breaks that are not properly terminated.
 
-## Question
+### Question
 Describe the need and Functionality of linker, assembler
 and loader.
 
-## Answer
+### Answer
 Linker:
 * Need: The linker is needed to combine multiple object files generated by
   the compiler into a single executable file.
@@ -419,9 +421,9 @@ Loader:
   the program, loads the program into memory, and starts the execution of the
   program.
 
-### Unit - II
+## Unit - II
 
-## Question
+### Question
 Check whether the following grammar is LL(1) or not
 ```
 S->iEtSS’|a
@@ -429,36 +431,36 @@ S’->eS|€
 E->b
 ```
 
-## Answer
-To check whether the given grammar is LL(1) or not, we need to construct the
+### Answer
+To check whether the given grammar is LL(1), we need to construct the
 FIRST and FOLLOW sets for each non-terminal symbol and check for any conflicts.
 
 Given Grammar:
 ```
-S → aBDh
-B → cC
-C → bC / ∈
-D → EF
-E → g / ∈
-F → f / ∈
+S -> aBDh
+B -> cC
+C -> bC / ∈
+D -> EF
+E -> g / ∈
+F -> f / ∈
 ```
 
 Rules for calculating First Function:
-- For a production rule X → ∈, First(X) = {∈}
+- For a production rule X -> ∈, First(X) = {∈}
 - For any terminal symbol ‘a’, First(a) = { a }
-- For a production rule X → Y1Y2Y3,
+- For a production rule X -> Y1Y2Y3,
     * Calculating First(X)
         - If ∈ ∉ First(Y1), then First(X) = First(Y1)
         - If ∈ ∈ First(Y1), then First(X) = { First(Y1) – ∈ } ∪ First(Y2Y3)
     * Calculating First(Y2Y3)
         - If ∈ ∉ First(Y2), then First(Y2Y3) = First(Y2)
         - If ∈ ∈ First(Y2), then First(Y2Y3) = { First(Y2) – ∈ } ∪ First(Y3)
-    * Similarly, we can make expansion for any production rule X → Y1Y2Y3…..Yn.
+    * Similarly, we can make expansion for any production rule X -> Y1Y2Y3…..Yn.
 
 Rules for calculating Follow Function:
 - For the start symbol S, Follow(S) = { $ }
 - For a production rule A -> αB, Follow(B) = Follow(A)
-- For any production rule A → αBβ, where β is a string of grammar symbols,
+- For any production rule A -> αBβ, where β is a string of grammar symbols,
     * If ∈ ∈ First(β), then Follow(B) = Follow(A) ∪ { First(β) - ∈ }
     * If ∈ ∉ First(β), then Follow(B) = Follow(A)
 
@@ -480,60 +482,89 @@ FOLLOW(F) = Follow(D) = {h}
 
 The given grammar is LL(1) because there are no conflicts in the FIRST and FOLLOW sets.
 
-## Question
+### Question
 Compare Top Down Parsing and Bottom up parsing with
 examples?
 
-## Answer
-Top-Down Parsing:                                                                           |   Bottom-Up Parsing:
-    * In top-down parsing, the parser starts from the root of the parse tree and            |       * In bottom-up parsing, the parser starts from the leaves of the parse tree
-      works its way down to the leaves. The parser uses a set of production rules           |         and works its way up to the root. The parser uses a set of production rules
-      to match the input string with the grammar of the programming language.               |         to match the input string with the grammar of the programming language.
-    * Characteristics of Top-Down Parsing:                                                  |       * Characteristics of Bottom-Up Parsing:
-        - The parser starts from the start symbol and tries to match the input string.      |           - The parser starts from the input string and tries to generate the start symbol.
-        - The parser uses a set of production rules to generate the parse tree.             |           - The parser uses a set of production rules to generate the parse tree.
-        - The parser uses a recursive descent or predictive parsing technique.              |           - The parser uses a shift-reduce or LR parsing technique.
-        - The parser may backtrack if it encounters a conflict in the grammar.              |           - The parser may reduce the input string to the start symbol.
-    * Example of Top-Down Parsing:                                                          |       * Example of Bottom-Up Parsing:
-        Consider the following grammar.                                                     |           Consider the following grammar:
-        ```                                                                                 |           ```
-        S → aAB                                                                             |           S → aAB
-        A → b / ∈                                                                           |           A → b / ∈
-        B → c / d                                                                           |           B → c / d
-        ```                                                                                 |           ```
-        Input: abd                                                                          |           Input: abd
-        Parse Tree:                                                                         |           Parse Tree:
-        ```                                                                                 |           ```
-          S                                                                                 |             S
-         / \                                                                                |            / \
-        a   AB                                                                              |           a   AB
-           /  \                                                                             |              /  \
-          b    d                                                                            |             A    d
-        ```                                                                                 |            / \
-                                                                                            |           b   B
-                                                                                            |              / \
-                                                                                            |             c   d
-                                                                                            |           ```
+### Answer
+Top-Down Parsing:
+* In top-down parsing, the parser starts from the root of the parse tree and
+  works its way down to the leaves. The parser uses a set of production rules
+  to match the input string with the grammar of the programming language.
+* Characteristics of Top-Down Parsing:
+    - The parser starts from the start symbol and tries to match the input string.
+    - The parser uses a set of production rules to generate the parse tree.
+    - The parser uses a recursive descent or predictive parsing technique.
+    - The parser may backtrack if it encounters a conflict in the grammar.
+* Example of Top-Down Parsing:
+    Consider the following grammar.
+    ```
+    S -> aAB
+    A -> b / ∈
+    B -> c / d
+    ```
+    Input: abd
+    Parse Tree:
+    ```
+      S
+     / \
+    a   AB
+       /  \
+      b    d
+    ```
 
-## Question
-Explain Left Recurssion and Left Factoring with an examples?
+Bottom-Up Parsing:
+* In bottom-up parsing, the parser starts from the leaves of the parse tree
+ and works its way up to the root. The parser uses a set of production rules
+ to match the input string with the grammar of the programming language.
+* Characteristics of Bottom-Up Parsing:
+   - The parser starts from the input string and tries to generate the start symbol.
+   - The parser uses a set of production rules to generate the parse tree.
+   - The parser uses a shift-reduce or LR parsing technique.
+   - The parser may reduce the input string to the start symbol.
+* Example of Bottom-Up Parsing:
+   Consider the following grammar:
+   ```
+   S -> aAB
+   A -> b / ∈
+   B -> c / d
+   ```
+   Input: abd
+   Parse Tree:
+   ```
+     S
+    / \
+   a   AB
+      /  \
+     A    d
+    / \
+   b   B
+      / \
+     c   d
+   ```
 
-## Answer
+
+
+
+### Question
+Explain Left Recursion and Left Factoring with an examples?
+
+### Answer
 Left Recursion:
 * Left recursion occurs when a non-terminal symbol can directly or indirectly
   produce a production rule that starts with itself.
 * Example of Left Recursion:
 - Consider the following grammar:
   ```
-  A → Aa / b
+  A -> Aa / b
   ```
-  The production rule A → Aa is left-recursive because A can directly produce
+  The production rule A -> Aa is left-recursive because A can directly produce
   a production rule that starts with itself.
 * Left recursion can cause infinite loops in the parser and lead to non-termination.
 * To eliminate left recursion, we can rewrite the grammar as follows:
   ```
-  A → bA’
-  A’ → aA’ / ∈
+  A -> bA’
+  A’ -> aA’ / ∈
   ```
 
 Left Factoring:
@@ -543,19 +574,19 @@ Left Factoring:
 * Example of Left Factoring:
   Consider the following grammar:
   ```
-  A → ab / ac
+  A -> ab / ac
   ```
   The production rules ab and ac share a common prefix a.
 * To eliminate left factoring, we can rewrite the grammar as follows:
   ```
-  A → aB
-  B → b / c
+  A -> aB
+  B -> b / c
   ```
 
-## Question
+### Question
 Explain Recursive Descent parser with an examples?
 
-## Answer
+### Answer
 Recursive Descent Parser:
 * A recursive descent parser is a type of top-down parser that uses a set of
   recursive procedures to parse the input string. Each non-terminal symbol in
@@ -571,9 +602,9 @@ Recursive Descent Parser:
 * Example of Recursive Descent Parsing:
   Consider the following grammar:
   ```
-  S → aAB
-  A → b / ∈
-  B → c / d
+  S -> aAB
+  A -> b / ∈
+  B -> c / d
   ```
   Input: abd
   Parse Tree:
@@ -620,33 +651,325 @@ Recursive Descent Parser:
           Error
   ```
 
-## Question
-Eliminate the left recursion for the grammar .
+### Question
+Eliminate the left recursion for the grammar.
 ```
-A → ABd | Aa | a
-B → Be | b
+A -> ABd | Aa | a
+B -> Be | b
 ```
 
-## Answer
+### Answer
 Rules for Eliminating Left Recursion:
 * Given Grammar:
     ```
-    A → ABd | Aa | a
+    A -> ABd | Aa | a
         |  Aα    |
 
-    B → Be | b
+    B -> Be | b
     ```
-* For a production rule A → Aα|β, where α and β are strings of grammar symbols,
+* For a production rule A -> Aα|β, where α and β are strings of grammar symbols,
   Eliminate left recursion by replacing A with A’:
   ```
-  A → βA’
-  A’ → αA’ | ∈
+  A -> βA’
+  A’ -> αA’ | ∈
   ```
 
 Therefore the grammar after eliminating left recursion is:
 ```
-A → aA’
-A’ → BdA’ | aA’ | ∈
-B → bB’
-B’ → eB’ | ∈
+A -> aA’
+A’ -> BdA’ | aA’ | ∈
+B -> bB’
+B’ -> eB’ | ∈
+```
+
+### Question
+Check whether the following grammar is ambiguous or not.
+```
+S-> aS | Sa | Є
+```
+
+### Answer
+A grammar is ambiguous if it has more than one parse tree for a given input string.
+To check whether the given grammar is ambiguous, we need to construct the
+parse tree for a given input string and check if there are multiple parse trees.
+
+Given Grammar:
+```
+S -> aS | Sa | ∈
+```
+Let's consider the input string 'aaa':
+Parse Tree 1:
+```
+    S
+   / \
+  a   S
+     / \
+    a   S
+       / \
+      a   ∈
+```
+Parse Tree 2:
+```
+        S
+       / \
+      S   a
+     / \
+    a   S
+       / \
+      a   ∈
+```
+Since there are multiple parse trees for the input string "aaa", the given grammar is ambiguous.
+
+### Question
+Show that following Grammar is LL(1)
+```
+S->AaAb |BbBa
+A->€
+B->€
+```
+
+### Answer
+To check whether the given grammar is LL(1), we need to construct the
+FIRST and FOLLOW sets for each non-terminal symbol and check for any conflicts.
+
+Given Grammar:
+```
+S -> AaAb | BbBa
+A -> €
+B -> €
+```
+
+First Set:
+```
+FIRST(S) = {€, a, b}
+FIRST(A) = {€}
+FIRST(B) = {€}
+```
+
+Follow set:
+```
+FOLLOW(S) = { $ }
+FOLLOW(A) = { a, b }
+FOLLOW(B) = { b, a }
+```
+
+The given grammar is not LL(1) because there multiple possible derivations for
+'a' and 'b'. The epsilon productions can cause conflicts in parsing table and
+thus a deterministic LL(1) parsing table cannot be constructed
+
+### Question
+Construct Right most derivation for the grammar:
+```
+E->E+T/T
+T->T*F/F
+F->(E)/id
+for w= id+id*id.
+```
+
+### Answer
+Given Grammar:
+```
+E -> E + T / T
+T -> T * F / F
+F -> ( E ) / id
+```
+Input String: id + id * id
+
+Rightmost Derivation:
+```
+E -> E + T
+  -> E + T * F
+  -> E + F * F
+  -> E + id * F
+  -> E + id * id
+  -> T + id * id
+  -> F + id * id
+  -> id + id * id
+```
+
+### Question
+Construct predictive parsing table for the grammar:
+```
+E->E+T/T
+T->T*F/F
+F->(E)/id
+```
+
+### Answer
+Given Grammar:
+```
+E -> E + T / T
+T -> T * F / F
+F -> ( E ) / id
+```
+
+Modified Grammar after removing Left Recursion:
+```
+E -> T E'
+E' -> + T E' / €
+T -> F T'
+T' -> * F T' / €
+F -> ( E ) / id
+```
+
+First and Follow Sets:
+```
+FIRST(E) = First(T) = First(F) = { (, id }
+FIRST(E') = { +, € }
+FIRST(T) = First(F) = { (, id }
+FIRST(T') = { *, € }
+FIRST(F) = { (, id }
+
+FOLLOW(E) = { $, ) }
+FOLLOW(E') = { $, ) }
+FOLLOW(T) = { +, $, ) }
+FOLLOW(T') = { +, $, ) }
+FOLLOW(F) = { *, +, $, ) }
+```
+Parsing Table:
+```table
++-------+------------+-------------------+--------------+--------------+------------+-------------+
+|       |   id       |   +               |   *          |   (          |   )        |   $         |
++-------+------------+-------------------+--------------+--------------+------------+-------------+
+|  E    |  E -> T E'  |                   |              |  E -> T E'    |            |             |
+|  E'   |            |  E' -> + T E'      |              |              |  E' -> €    |  E' -> €     |
+|  T    |  T -> F T'  |                   |              |  T -> F T'    |            |             |
+|  T'   |            |  T' -> €           |  T' -> * F T' |              |  T' -> €    |  T' -> €     |
+|  F    |  F -> id    |                   |              |  F -> ( E )   |            |             |
++-------+------------+-------------------+--------------+--------------+------------+-------------+
+```
+
+
+### Unit - III
+
+### Question
+Explain LR parsing with an example?
+
+### Answer
+LR Parsing:
+* LR parsing is a type of bottom-up parsing that uses a deterministic pushdown
+  automaton to parse the input string. The LR parser reads the input string from
+  left to right and constructs a reversed rightmost derivation of the input string.
+* Characteristics of LR Parsing:
+    - The parser starts from the input string and works its way up to the start symbol.
+    - The parser uses a deterministic pushdown automaton to generate the parse tree.
+    - The parser uses a shift-reduce technique to reduce the input string to the start symbol.
+    - The parser may use LR(0), SLR, LALR, or CLR parsing techniques.
+* Example of LR Parsing:
+    Consider the following grammar:
+    ```
+    E -> E + T / T
+    T -> T * F / F
+    F -> ( E ) / id
+    ```
+    Input: id + id * id
+
+    Parse Steps:
+    ```table
+    Stack        | Input          | Action
+    -------------+----------------+----------------
+    0            | id + id * id $ | Shift
+    0 id         | + id * id $    | Reduce F -> id
+    0 F          | + id * id $    | Shift
+    0 F +        | id * id $      | Shift
+    0 F + id     | * id $         | Reduce F -> id
+    0 F + F      | * id $         | Shift
+    0 F + F *    | id $           | Shift
+    0 F + F * id | $              | Reduce F -> id
+    0 F + F      | $              | Reduce T -> F
+    0 F          | $              | Reduce T -> T * F
+    0 T          | $              | Reduce E -> T
+    0 E          | $              | Accept
+    ```
+
+### Question
+Show that the following grammar:
+```
+S -> Aa | bAc | Bc
+A -> d
+B -> d
+```
+... is LR(1) but not LALR(1).
+
+### Answer
+To show that the given grammar is LR(1) but not LALR(1), we need to construct
+the LR(1) and LALR(1) parsing tables and check for any conflicts.
+
+Given Grammar:
+```
+S -> Aa | bAc | Bc
+A -> d
+B -> d
+```
+
+LR(1) Parsing Table:
+```table
++-------+------------+------------+------------+------------+
+|       |   a        |   b        |   c        |   $        |
++-------+------------+------------+------------+------------+
+|  S    |  S -> Aa   |  S -> bAc  |  S -> Bc   |            |
+|  A    |  A -> d    |            |            |            |
+|  B    |            |            |  B -> d    |            |
++-------+------------+------------+------------+------------+
+```
+
+LALR(1) Parsing Table:
+```table
++-------+------------+------------+------------+------------+
+|       |   a        |   b        |   c        |   $        |
++-------+------------+------------+------------+------------+
+|  S    |  S -> Aa   |  S -> bAc  |  S -> Bc   |            |
+|  A    |  A -> d    |            |            |            |
+|  B    |            |            |  B -> d    |            |
++-------+------------+------------+------------+------------+
+```
+
+## Note
+Steps of Construction for LR(1) and LALR(1) Parsing Tables:
+1. Construct the LR(0) items for the given grammar. The LR(0) items are the
+   sets of items that represent the possible configurations of the LR(0) parser.
+2. Construct the LR(1) items by augmenting the LR(0) items with the look-ahead
+   symbols. The look-ahead symbols are used to resolve shift-reduce and reduce-reduce conflicts.
+3. Construct the LR(1) parsing table by filling in the action and go-to entries for each LR(1) item.
+4. Construct the LALR(1) parsing table by merging the states of the LR(1) parsing table that have the same core items.
+
+Augmented Form of given grammar:
+```
+S' -> S
+S -> Aa | bAc | Bc
+A -> d
+B -> d
+```
+For production of the form [A -> α.Xβ, a], if there exists a production [X -> γ]
+and a state [X -> .γ, b] in the LR(1) items, then add [A -> αX.β, a] to the LR(1)
+items. [Closure]
+
+Canonical LR(1) Items:
+```
+I0:
+S' -> .S, $
+S -> .Aa, a
+S -> .bAc, c
+S -> .Bc, c
+A -> .d, a
+B -> .d, c
+
+I1:
+S' -> S., $
+
+I2:
+S -> A.a, a
+
+I3:
+S -> b.Ac, c
+A -> .d, a
+
+I4:
+S -> B.c, c
+
+I5:
+A -> d., a
+
+I6:
+B -> d., c
 ```
