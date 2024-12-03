@@ -12,8 +12,8 @@ Lexical analysis:
 * Recognition of Tokens
 * The Lexical-Analyzer Generator Lex.
 
-## UNIT-II: 12
-Periods Design of Parsers:
+## UNIT-II:
+Design of Parsers:
 * Top-down Parsers
 * Backtracking
 * Recursive Descent Parser
