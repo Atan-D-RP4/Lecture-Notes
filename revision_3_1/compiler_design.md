@@ -840,7 +840,7 @@ Parsing Table:
 ```
 
 
-### Unit - III
+## Unit - III
 
 ### Question
 Explain LR parsing with an example?
@@ -924,7 +924,7 @@ LALR(1) Parsing Table:
 +-------+------------+------------+------------+------------+
 ```
 
-## Note
+### Note
 Steps of Construction for LR(1) and LALR(1) Parsing Tables:
 1. Construct the LR(0) items for the given grammar. The LR(0) items are the
    sets of items that represent the possible configurations of the LR(0) parser.
@@ -973,3 +973,161 @@ A -> d., a
 I6:
 B -> d., c
 ```
+
+## UNIT-IV
+### Question
+Explain about YACC?
+
+### Answer
+YACC (Yet Another Compiler Compiler) is a tool that generates parsers for
+programming languages. YACC is a parser generator that takes a grammar as input
+and generates a parser that can parse the input according to the grammar.
+
+Features of YACC:
+* YACC uses a context-free grammar to specify the syntax of the programming language.
+* It supports LALR(1) grammars (Look-Ahead Left-to-Right parsing with 1 token of look-ahead).
+* Grammar rules are defined with production rules that describe how input strings can be derived.
+* YACC generates a C program that implements a parser for the given grammar.
+* The parser processes input text and validates whether it conforms to the specified grammar.
+* YACC is often used alongside a lexical analyzer generator like Lex.
+* Lex generates the tokenizer, which divides input into tokens, and YACC uses these tokens to build the syntax tree.
+* Grammar rules in YACC can have actions, written in C, which are executed when the rule is matched.
+* These actions are commonly used to build abstract syntax trees (ASTs) or perform semantic checks.
+* YACC resolves shift/reduce and reduce/reduce conflicts using predefined rules (e.g., favoring shifts for shift/reduce conflicts).
+
+### Question
+Differentiate between LL and LR Parsers.
+
+### Answer
+LL Parser:
+* LL parsers are top-down parsers that read input from left to right and construct a leftmost derivation of the input string.
+* Characteristics of LL Parser:
+    - The parser starts from the start symbol and works its way down to the input string.
+    - The parser uses a set of production rules to generate the parse tree.
+    - The parser uses a recursive descent or predictive parsing technique.
+    - The parser may backtrack if it encounters a conflict in the grammar.
+* Advantages of LL Parser:
+    - Easy to implement and debug.
+    - Suitable for LL(1) grammars.
+    - Can be used for syntax-directed translation.
+* Disadvantages of LL Parser:
+    - Cannot handle left-recursive grammars.
+    - May require backtracking for ambiguous grammars.
+    - Limited lookahead may lead to conflicts.
+
+LR Parser:
+* LR parsers are bottom-up parsers that read input from left to right and construct a rightmost derivation of the input string.
+* Characteristics of LR Parser:
+    - The parser starts from the input string and works its way up to the start symbol.
+    - The parser uses a deterministic pushdown automaton to generate the parse tree.
+    - The parser uses a shift-reduce technique to reduce the input string to the start symbol.
+    - The parser may use LR(0), SLR, LALR, or CLR parsing techniques.
+* Advantages of LR Parser:
+    - Can handle left-recursive grammars.
+    - Suitable for a wide range of grammars.
+    - Can handle a larger class of languages.
+
+### Question
+What is meant by three address code? Different types of three
+address code techniques with examples?
+
+### Answer
+Three-address code is an intermediate representation of code that uses at most
+three operands per instruction. Each instruction in a three-address code performs
+a single operation on two or three operands and produces a result.
+
+Types of Three-Address Code Techniques:
+1. Quadruples:
+    Quadruples are a simple form of three-address code that uses four fields
+    to represent an instruction. The fields are:
+    - Operator: The operation to be performed.
+    - Operand1: The first operand.
+    - Operand2: The second operand.
+    - Result: The result of the operation.
+    Example:
+    ```
+    +, a, b, t1
+    *, t1, c, t2
+    =, t2, _, x
+    ```
+2. Triples:
+    Triples are a more compact form of three-address code that uses three fields
+    to represent an instruction. The fields are:
+    - Operator: The operation to be performed.
+    - Operand1: The first operand.
+    - Operand2: The second operand.
+    Example:
+    ```
+    +, a, b
+    *, t1, c
+    =, x, t2
+    ```
+3. Indirect Triples:
+    Indirect triples are a form of three-address code that uses three fields
+    to represent an instruction. The fields are:
+    - Operator: The operation to be performed.
+    - Operand1: The first operand.
+    - Operand2: The second operand.
+    Here, references to the instructions instead of the stored values
+    Example:
+    ```
+    +, t1,t2
+    *, t1, c
+    =, x, t2
+    ```
+
+### Question
+Explain synthesized and inherited attributes with an example?
+
+### Answer
+Synthesized Attributes:
+Synthesized attributes are attributes that are computed bottom-up. They are
+computed from the values of the attributes of the child nodes in the parse
+tree. These attributes are passed from the leaves of the tree to the root.
+* Purpose: They are typically used to represent information that is derived
+  from the children of a node in the syntax tree.
+* Computation: Synthesized attributes are computed by the semantic rules
+  associated with the grammar's production rules.
+* Example:
+  Consider the following grammar:
+  ```
+  E -> E + T | T
+  T -> T * F | F
+  F -> ( E ) | id
+  ```
+  Synthesized attributes can be used to compute the value of an expression.
+  ```
+  E -> E1 + T2 { E.val = E1.val + T2.val }
+  E -> T1 { E.val = T1.val }
+  T -> T1 * F2 { T.val = T1.val * F2.val }
+  T -> F1 { T.val = F1.val }
+  F -> ( E1 ) { F.val = E1.val }
+  F -> id { F.val = id.val }
+  ```
+
+Inherited Attributes:
+Inherited attributes are attributes that are computed top-down. They are passed
+from the parent node to the child nodes in the syntax tree. These attributes
+carry information that needs to be passed down from the root of the tree to its
+subtrees.
+
+* Purpose: They are used to represent information that needs to be passed from
+  the parent to the children, such as context-sensitive information.
+* Computation: Inherited attributes are computed based on the values of the
+  parent node or neighboring nodes.
+* Example:
+  Consider the following grammar:
+  ```
+  E -> E + T | T
+  T -> T * F
+  F -> ( E ) | id
+  ```
+  Inherited attributes can be used to pass context information from the parent
+  to the children.
+  ```
+  E -> E1 + T2 { E.type = E1.type; T1.type = T2.type }
+  E -> T1 { E.type = T1.type }
+  T -> T1 * F2 { T.type = T1.type; F2.type = F2.type }
+  F -> ( E1 ) { F.type = E1.type }
+  F -> id { F.type = id.type }
+  ```
