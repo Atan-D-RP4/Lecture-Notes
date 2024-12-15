@@ -1,3 +1,24 @@
+"""
+14. spirally traversing a matrix CO4
+Given a matrix of size r*c. Traverse the matrix in spiral form.
+Test case 1:
+Input:
+r = 4, c = 4
+matrix[][] = {{1, 2, 3, 4},
+{5, 6, 7, 8},
+{9, 10, 11, 12},
+{13, 14, 15,16}}
+Output:
+1 2 3 4 8 12 16 15 14 13 9 5 6 7 11 10
+Test case 2:
+Input:
+r = 3, c = 4
+matrix[][] = {{1, 2, 3, 4},
+{5, 6, 7, 8},
+{9, 10, 11, 12}}
+Output:
+1 2 3 4 8 12 11 10 9 5 6 7
+"""
 # Traversing a matrix in a spiral order
 def spiral_matrix_traversal(mat: list[list[int]]) -> None:
     rows, cols = len(mat), len(mat[0])

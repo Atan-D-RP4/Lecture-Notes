@@ -1,3 +1,39 @@
+"""
+9. 15-Puzzle Problem CO3
+The 15-puzzle is a very popular game: you have certainly seen it even if you don‟t know
+it bythat name. It is constructed with 15 sliding tiles, each with a different number from 1
+to 15, with all tiles packed into a 4 by 4 frame with one tile missing. The object of the
+puzzle is to arrange the e tiles so that they are ordered as below:
+The only legal operation is to exchange the missing tile with one of the 2, 3, or 4 tiles it
+sharesan edge with. Consider the following sequence of moves:
+We denote moves by the neighbor of the missing tile is swapped with it. Legal values are
+“R,”“L,” “U,” and “D” for right, left, up, and down, based on the movements of the hole.
+Given aninitial configuration of a 15-puzzle you must determine a sequence of steps that
+take you tothe final state. Each solvable 15-puzzle input requires at most 45 steps to be
+solved with our judge solution; you are limited to using at most 50 steps to solve the puzzle.
+
+Input The first line of the input contains an integer n indicating the number of puzzle
+set inputs. The next 4n lines contain n puzzles at four lines per puzzle. Zero denotes
+the missing tile.
+Output For each input set you must produce one line of output. If the given initial
+configuration is not solvable, print the line “This puzzle is not solvable.” If the puzzle
+is solvable, then print the move sequence as described above to solve the puzzle.
+Sample Input 1
+2
+2 3 4 0
+1 5 7 8
+9 6 10 12
+13 14 11 15
+13 1 2 4
+5 0 3 7
+9 6 10 12
+15 8 11 14
+
+Sample Output 1
+LLLDRDRDR
+This puzzle is not solvable
+"""
+
 def is_solvable(puzzle: list[list[int]]) -> bool:
     flat = [num for row in puzzle for num in row if num != 0]
 

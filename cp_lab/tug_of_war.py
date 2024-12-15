@@ -41,6 +41,14 @@ def tug_of_war(n: int, weights: list[int]) -> tuple[int, int]:
             else:
                 dp[i][j] = dp[i - 1][j]
 
+    for i in range(n + 1):
+        for j in range(half_weight + 1):
+            if dp[i][j]:
+                print('1', end=' ')
+            else:
+                print('0', end=' ')
+        print()
+
     for j in range(half_weight, -1, -1):
         if dp[n][j]:
             return j, total_weight - j
@@ -55,3 +63,17 @@ for _ in range(test_cases):
     team1, team2 = tug_of_war(n, weights)
     print(team1, team2)
     print()
+
+# Describe the solution
+"""
+The problem is a variation of the 0/1 knapsack problem. The problem is to divide the
+people into two teams such that the difference between the total weight of the two teams
+is minimized. The total weight of the people is 450 at most. The total weight of the
+people on each team should be as nearly equal as possible. The problem can be solved
+using dynamic programming. The idea is to create a 2D array dp of size n + 1 x
+(half_weight + 1), where n is the number of people and half_weight is the total weight
+of the people divided by 2. The dp[i][j] will be True if there is a subset of people
+from 1 to i whose total weight is j. The dp[i][j] can be calculated using the following
+recurrence relation:
+dp[i][j] = if j >= weights ? dp[i - 1][j] or dp[i - 1][j - weights[i - 1]] : dp[i - 1][j]
+"""
