@@ -32,3 +32,7 @@ def findMinimalSolution(a, b):
         x, y = -y, -x
     
     return x, y, gcd
+
+a, b = input()
+d, x, y = gcdExtended(a,b)
+print(min(x,y), max(x,y), d)
